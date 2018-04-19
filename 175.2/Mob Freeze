@@ -1,0 +1,7 @@
+[Enable]
+51DE97:
+je 0051ded6
+
+[Disable]
+51DE97:
+jne 0051ded6
