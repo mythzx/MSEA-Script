@@ -1,2 +1,0 @@
-# MS-Script
-Maplestory scripts
