@@ -1,0 +1,58 @@
+[ENABLE]
+alloc(Hook,128)
+alloc(GetMobXY,128)
+alloc(MobX,4)
+alloc(MobY,4)
+registersymbol(MobX)
+registersymbol(MobY)
+label(GetMobXY_Return)
+label(Return)
+
+GetMobXY:
+push eax
+mov eax,[ecx+8C8] // E8 ? ? ? ? E8 ? ? ? ? 89 87 ? ? 00 00 8D 87 [FIRST RESULT] [OFFSET BELOW]
+mov [MobX],eax
+mov eax,[ecx+8CC] // E8 ? ? ? ? E8 ? ? ? ? 89 87 ? ? 00 00 8B 87 [FIRST RESULT] [OFFSET BELOW]
+mov [MobY],eax
+pop eax
+
+//Original
+push ebp
+mov ebp,esp
+push -01
+jmp GetMobXY_Return
+
+023CAA20: // CVecCtrlMob::WorkUpdateActive
+jmp GetMobXY
+GetMobXY_Return:
+
+Hook:
+mov edi,esi
+push [MobY]
+push [MobX]
+lea ecx,[edi+10]
+call 00DB6960 // IWzShape2D::Move 55 8B EC 56 57 FF 75 ? 8B ? FF 75 ? 57 8B 07 FF ? ? 8B F0 [FIRST]
+mov ecx,esi
+// Original Opcode
+call 00C3DAC0 // CVecCtrl::UpdateActive
+jmp Return
+
+01300A85:
+jmp Hook
+Return:
+
+[DISABLE]
+023CAA20: // 55 8B EC 6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 83 EC ? 56 57 A1 ? ? ? ? 33 C5 50 8D ? ? 64 A3 00 00 00 00 8B F9 89 ? ? 8B ? FF
+push ebp
+mov ebp,esp
+push -01
+
+01300A85: //E8 ? ? ? ? FF B3 ? ? 00 00 E8 ? ? ? ? 83 C4 04 85 C0 0F 84
+call 00C3DAC0
+
+dealloc(Hook,128)
+dealloc(GetMobXY,128)
+dealloc(MobX,4)
+dealloc(MobY,4)
+unregistersymbol(MobX)
+unregistersymbol(MobY)

@@ -1,0 +1,6 @@
+[ENABLE]
+014982A0: //55 8B EC 8B 45 ?? 56 57 8B F9 8B B7 ?? ?? ?? ??
+RET
+[DISABLE]
+014982A0:
+push ebp

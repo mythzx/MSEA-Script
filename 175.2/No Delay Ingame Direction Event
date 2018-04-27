@@ -1,0 +1,9 @@
+define(removeDelay, 013127BA) // 78 ? 8B 46 08 6A 00
+//Credits to kevintjuh93
+[Enable]
+removeDelay:
+db 90 90
+
+[Disable]
+removeDelay:
+db 78 71

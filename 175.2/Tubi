@@ -1,0 +1,7 @@
+[ENABLE]
+023B0FB1: // CWvsContext::SetExclRequestSent
+db C2 04 00
+
+[DISABLE]
+023B0FB1: // 8D 8E ? ? 00 00 E8 ? ? ? ? E8 ? ? ? ? 50 [Start]
+db 55 8B EC

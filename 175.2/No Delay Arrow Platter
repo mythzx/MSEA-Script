@@ -1,0 +1,8 @@
+[ENABLE]
+0112F293: //Arrow Platter ND
+db 90 90
+
+
+[DISABLE]
+0112F293: //76 13 6A 00 8D
+db 76 13

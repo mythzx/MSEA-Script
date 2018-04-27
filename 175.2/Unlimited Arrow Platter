@@ -1,0 +1,7 @@
+[ENABLE]
+01132660: //Unlimited Arrow Platter
+ret 4
+
+[DISABLE]
+01132660: //[Third Result] 55 8B ? 83 ? ? 6A ? 68 ? ? ? ? 64 A1 00 00 00 00 50 83 ? ? 53 56 57 A1 ? ? ? ? 33 ? 50 8D ? 24 ? 64 A3 00 00 00 00 8B ? 8B ? ? E8
+db 55 8B EC

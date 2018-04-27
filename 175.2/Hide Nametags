@@ -1,0 +1,11 @@
+//Hides nametags on your cilent only.
+//For SS and Videos
+
+define(HideNameTags,020F0400) //6A 00 6A 00 68 F3 03 [FUNCTION START]
+[ENABLE]
+HideNameTags: //CUser:DrawNameTags
+ret
+
+[DISABLE]
+HideNameTags:
+push ebp
